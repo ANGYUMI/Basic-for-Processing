@@ -1,0 +1,26 @@
+float angle = 0.0;    // Current angle
+float speed = 0.02;   // Speed of motion
+float radius = 300.0;  // Range of motion
+
+
+void setup() {
+  size(1285, 725, P3D); 
+  noStroke();
+}
+
+void draw() {
+  fill(0, 4);
+  rect(0, 0, width, height); 
+  pushMatrix();
+  translate(width/2, height/2);
+  angle += speed;  // Update the angle
+  float sinval = sin(angle);
+  float cosval = cos(angle);
+  // Set the position of the small circle based on new
+  // values from sine and cosine
+  float x =(cosval * radius);
+  float y =(sinval * radius);
+  fill(255);
+  ellipse(x, y, 2, 2);  // Draw smaller circle
+  popMatrix();
+}
